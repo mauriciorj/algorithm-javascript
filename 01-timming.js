@@ -1,3 +1,7 @@
+// This is an example how to check the time performance of an algorithm
+//Big O
+// O(n)
+
 function addUpTo(n){
     let total = 0;
     for (let i = 0; i <= n; i++){

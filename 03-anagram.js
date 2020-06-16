@@ -1,3 +1,5 @@
+//Check if a second string is an anaram of the first one
+
 function validAnagram(str1, str2){
 
   if(str1.length !== str2.length){

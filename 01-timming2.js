@@ -1,3 +1,7 @@
+// This is an example how to check the time performance of an algorithm
+//Big O
+// O(1)
+
 function addUpTo(n){
     return n * (n + 1) / 2;
 }

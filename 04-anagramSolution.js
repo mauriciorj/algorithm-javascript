@@ -1,3 +1,7 @@
+//Anagram solution 2
+//This solution create an object to count how many time each letter repeat
+//
+
 function validAnagram(first, second) {
   if (first.length !== second.length) {
     return false;
