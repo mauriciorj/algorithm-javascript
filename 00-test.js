@@ -1,41 +1,55 @@
-// function test(arr){
-//     newArr = []
+function zeroesToCenter(arr) {
 
-//     if(newArr == ''){
-//         console.log('its null')
-//     }
+if(arr.length < 3){
+  return arr
+}
 
-// }
+var middle = arr.length / 2
 
-// test('aaaa')
+var counterZeros = 0;
 
-/*****************************************************/
+for(let i = 0; i < arr.length; i++){
+    if(arr[i] === 0){
+      counterZeros += 1
+    }
+}
 
-// function test (){
-//
-//     let collection = {}
-//
-//     for(let val in arguments){
-//         //collection[arguments[val]] = (collection[arguments[val]] || 0) + 1
-//         collection[arguments[val]] = (collection[arguments[val]] || 0) + 1;
-//     }
-//     return collection;
-// }
-//
-// console.log(test(1,1,2,3,5))
+if (counterZeros === 0) {
+  return arr
+}
 
-/*****************************************************/
+var initZeros = Math.floor((arr.length - counterZeros)/2)
+if(counterZeros === 1){
+  finaleros = 1
+}else{
+var finaleros = Math.floor((middle + (initZeros-1)))
+}
+console.log(initZeros)
+console.log(finaleros)
 
-// function testArr(arr){
-//
-//   for(let val of arr){
-//     console.log('for OF -> ' + val);
-//   }
-//
-//   for(let val in arr){
-//     console.log('for IN -> ' + val);
-//   }
-//
-// }
-//
-// testArr('abcdef')
+var newArr = [];
+var j = 0;
+var k = initZeros;
+
+for(let i = 0; i < arr.length;i++){
+
+  if(arr[i] !== 0){
+    newArr[j] = arr[i]
+    j += 1
+    if(j === (initZeros)){
+       j = finaleros + 1
+     }
+  }else if (arr[i] === 0) {
+    newArr[k] = arr[i]
+    k += 1
+  }
+
+}
+
+return newArr
+
+}
+
+arr = [7,1,2,0]
+
+console.log(zeroesToCenter(arr))
