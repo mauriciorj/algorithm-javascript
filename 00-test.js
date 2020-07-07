@@ -1,26 +1,44 @@
-function getDataUrl(urlParam) { 
-  return new Promise((resolve, reject) => {
-    
-    fetch(urlParam)
-    .then(response => {
-    
-      if(response.status === 200){
-        const data = response.json();
-        resolve(data);
-      }else{
-        var error = new Error("error found ->")
-        reject(error);
-      }
-    })
-    // const status = result.json();
+const sampleOptions = [
+  { id: "753", title: "This is the first option" },
+  { id: "035", title: "This is the second option" }
+];
 
-    // result.then(response => response.json())
-    // .then(data => console.log(data))
+class OptionsShower extends React.Component {
+  constructor(props) {
+    super(props);
+    const { options } = props;
+    this.state = { options, displayOptions: false };
+  }
 
-  });
+  displayOptions() {
+    this.setState({
+      options: this.state.options,
+      displayOptions: !this.state.displayOptions
+    });
+  }
+
+  render() {
+    var options = null;
+    if (this.state.displayOptions) {
+      options = (
+        <ul id="options">
+          {this.state.options.map(option => (
+            <li key={option.id}>{option.title}</li>
+          ))}
+        </ul>
+      );
+    }
+    return (
+      <div>
+        <button onClick={this.displayOptions}>
+          {this.state.displayOptions ? "Hide options" : "Show options"}
+        </button>
+        {options}
+      </div>
+    );
+  }
 }
 
-(async function main() {
-  var getData = await getDataUrl('https://jsonmock.hackerrank.com/api/countries?page=1');
-  console.log(getData);
-})();
+document.body.innerHTML = "<div id='root'> </div>";
+const rootElement = document.getElementById("root");
+ReactDOM.render(<OptionsShower options={sampleOptions} />, rootElement);
